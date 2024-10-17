@@ -35,4 +35,7 @@ public class Constants {
     public static final String TITLE = "title";
     public static final String PRICE = "price";
     public static final String DESCRIPTION = "description";
+
+    //CATEGORIA JSON
+    public static final String NAME = "name";
 }
