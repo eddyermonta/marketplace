@@ -24,12 +24,6 @@ public class CategoryServiceImpl implements CategoryService {
     public Mono<List<CategoryDTO>> getAllCategories() {
         return platziApiClient.getAllCategories()
                 .flatMapMany(Flux::fromArray)
-                .map(category -> {
-                    CategoryDTO categoryDTO = new CategoryDTO();
-                    categoryDTO.setCId(category.getCId());
-                    categoryDTO.setTitle(category.getTitle());
-                    return categoryDTO;
-                })
                 .collectList();
     }
 }
