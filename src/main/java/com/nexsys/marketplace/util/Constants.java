@@ -9,13 +9,19 @@ public class Constants {
 
     // URL de la API de Platzi
     public static final String PLATZI_API_URL = "https://api.escuelajs.co/api/v1";
+
+    //GET ALL
     public static final String PLATZI_API_PRODUCTS = "/products";
     public static final String PLATZI_API_CATEGORIES = "/categories";
 
+    //POST
+    public static final String PLATZI_CREATE_PRODUCT = PLATZI_API_PRODUCTS +"/";
+
     // URL de la API de Nexsys
     public static final String NEXSYS_V1 = "/nexsys/v1";
-
+    public static final String API_PRODUCTS_CREATE = "/product";
     //SWAGGER DOCS
+    public static final String SWAGGER_URL ="http://localhost:8080/swagger-ui.html";
     public static final String SWAGGER_TITLE = "Marketplace API";
     public static final String SWAGGER_VERSION = "1.0";
     public static final String SWAGGER_DESCRIPTION = "API para gestionar productos y categorías en el marketplace";
@@ -35,7 +41,8 @@ public class Constants {
     public static final String TITLE = "title";
     public static final String PRICE = "price";
     public static final String DESCRIPTION = "description";
-
+    public static final String IMAGES = "images";
+    public static final String CATEGORY_ID_JSON = "categoryId";
     //CATEGORIA JSON
     public static final String NAME = "name";
 }

@@ -1,7 +1,9 @@
 package com.nexsys.marketplace.repository;
 
-import com.nexsys.marketplace.dto.CategoryDTO;
-import com.nexsys.marketplace.dto.ProductDTO;
+import com.nexsys.marketplace.dto.get.CategoryResponseDTO;
+import com.nexsys.marketplace.dto.get.ProductResponseDTO;
+import com.nexsys.marketplace.dto.post.CreateProductRequestDTO;
+import com.nexsys.marketplace.dto.post.CreateProductResponseDTO;
 import com.nexsys.marketplace.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,17 +22,25 @@ public class PlatziApiClient {
         this.webClient = webClientBuilder.baseUrl(PLATZI_API_URL).build();
     }
 
-    public Mono<ProductDTO[]> getAllProducts(){
+    public Mono<ProductResponseDTO[]> getAllProducts(){
         return this.webClient.get()
                 .uri(Constants.PLATZI_API_PRODUCTS)
                 .retrieve()
-                .bodyToMono(ProductDTO[].class);
+                .bodyToMono(ProductResponseDTO[].class);
     }
 
-    public Mono<CategoryDTO[]> getAllCategories() {
+    public Mono<CategoryResponseDTO[]> getAllCategories() {
         return this.webClient.get()
                 .uri(Constants.PLATZI_API_CATEGORIES)
                 .retrieve()
-                .bodyToMono(CategoryDTO[].class);
+                .bodyToMono(CategoryResponseDTO[].class);
+    }
+
+    public Mono<CreateProductResponseDTO> createProduct(CreateProductRequestDTO productApiRequestDTO) {
+        return this.webClient.post()
+                .uri(Constants.PLATZI_CREATE_PRODUCT)
+                .bodyValue(productApiRequestDTO)  // Enviar el cuerpo de la solicitud mapeada
+                .retrieve()
+                .bodyToMono(CreateProductResponseDTO.class);
     }
 }

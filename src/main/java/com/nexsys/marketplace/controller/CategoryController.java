@@ -1,6 +1,6 @@
 package com.nexsys.marketplace.controller;
 
-import com.nexsys.marketplace.dto.CategoryDTO;
+import com.nexsys.marketplace.dto.get.CategoryResponseDTO;
 import com.nexsys.marketplace.service.category.CategoryService;
 import com.nexsys.marketplace.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class CategoryController {
     }
 
     @GetMapping(Constants.PLATZI_API_CATEGORIES)
-    public Mono<List<CategoryDTO>> getAllCategories() {
+    public Mono<List<CategoryResponseDTO>> getAllCategories() {
         return categoryService.getAllCategories();
     }
 }
