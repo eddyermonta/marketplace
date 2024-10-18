@@ -4,6 +4,8 @@ import com.nexsys.marketplace.util.Constants;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,9 +22,8 @@ public class Product {
     private Long pId;
     private String name;
     private double buyPrice;
-    private String description;
-    @Column(name = Constants.IMAGE)
-    private String imageURL;
+    @ElementCollection
+    private List<String> images;
     @ManyToOne()
     @JoinColumn(name = Constants.CATEGORY_ID)
     private Category category;
