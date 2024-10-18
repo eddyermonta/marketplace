@@ -22,10 +22,12 @@ public class Product {
     private Long pId;
     private String name;
     private double buyPrice;
-    @ElementCollection
-    private List<String> images;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<ProductImage> images;
     @ManyToOne()
     @JoinColumn(name = Constants.CATEGORY_ID)
     private Category category;
+
+
 
 }

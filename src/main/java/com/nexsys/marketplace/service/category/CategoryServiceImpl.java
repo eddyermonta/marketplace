@@ -1,6 +1,7 @@
 package com.nexsys.marketplace.service.category;
 
 import com.nexsys.marketplace.dto.get.CategoryResponseDTO;
+import com.nexsys.marketplace.exception.CustomNotFoundException;
 import com.nexsys.marketplace.repository.PlatziApiClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
     public Mono<List<CategoryResponseDTO>> getAllCategories() {
         return platziApiClient.getAllCategories()
                 .flatMapMany(Flux::fromArray)
-                .collectList();
+                .collectList()
+                .switchIfEmpty(Mono.error(new CustomNotFoundException("No se encontraron categorías."))); // Manejo de errores
     }
 }
